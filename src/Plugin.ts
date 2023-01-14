@@ -17,11 +17,8 @@ let heroArray: Hero[] = [];
 let currentHeroId: string | undefined;
 
 // your code here..
-plugin.on('willAppear', ({ context }) => {
-  plugin.setTitle('test', context);
-});
-
-plugin.on('didReceiveSettings', async () => {
+plugin.on('willAppear', async ({ context }) => {
+  plugin.setTitle('Random Hero', context);
   const heroResponse = await fetch('https://overfast-api.tekrop.fr/heroes');
   if (heroResponse.ok) {
     const heroes = await heroResponse.json();
