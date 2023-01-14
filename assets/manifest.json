@@ -2,7 +2,7 @@
   "Actions": [
     {
       "Icon": "images/action1.icon",
-      "Name": "Your first action",
+      "Name": "Random Hero",
       "States": [
         {
           "Image": "images/action1.key",
@@ -12,15 +12,14 @@
       ],
       "SupportedInMultiActions": false,
       "Tooltip": "",
-      "UUID": "reverse.dns.formatted.namespace.action"
+      "UUID": "com.jrdn91.randomOwHero.randomHero"
     }
   ],
   "SDKVersion": 2,
-  "Author": "your name",
+  "Author": "Jordan",
   "CodePath": "plugin.html",
-  "PropertyInspectorPath": "propertyinspector.html",
-  "Name": "streamdeck template",
-  "Description": "a description",
+  "Name": "Random OW Hero",
+  "Description": "Get a random Overwatch hero for your games",
   "Icon": "images/pluginIcon",
   "Version": "0.0.0-development",
   "OS": [
