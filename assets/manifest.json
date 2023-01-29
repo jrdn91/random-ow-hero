@@ -2,12 +2,12 @@
   "Actions": [
     {
       "Icon": "images/action1.icon",
-      "Name": "Random Hero",
+      "Name": "All Heroes",
       "States": [
         {
           "Image": "images/action1.key",
-          "TitleAlignment": "middle",
-          "FontSize": "15"
+          "TitleAlignment": "bottom",
+          "FontSize": "8"
         }
       ],
       "SupportedInMultiActions": false,

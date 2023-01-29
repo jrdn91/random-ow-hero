@@ -17,19 +17,28 @@ let heroArray: Hero[] = [];
 let currentHeroId: string | undefined;
 
 // your code here..
-plugin.on('willAppear', async ({ context }) => {
-  plugin.setTitle('Random Hero', context);
-  const heroResponse = await fetch('https://overfast-api.tekrop.fr/heroes');
-  if (heroResponse.ok) {
-    const heroes = await heroResponse.json();
-    heroArray = heroes;
-  }
+fetch('https://overfast-api.tekrop.fr/heroes')
+  .then(async (response) => {
+    if (response.ok) {
+      const heroes = await response.json();
+      heroArray = heroes;
+      return heroes;
+    }
+    throw new Error('Error while fetching heroes');
+  })
+  .catch((error) => {
+    console.error(error);
+  });
+
+plugin.on('willAppear', async ({ context, action }) => {
+  plugin.setTitle(action, context);
 });
 
-plugin.on('keyUp', async ({ context }) => {
+plugin.on('keyUp', async ({ context, ...rest }) => {
+  console.log('rest', rest);
   // filters out the current hero from the array
-  const filteredHeroArray = heroArray.filter((hero) => hero.key !== currentHeroId);
-  const newRandomHero = GetRandomArrayElement(filteredHeroArray);
+  const heroArrayWithoutCurrentHero = heroArray.filter((hero) => hero.key !== currentHeroId);
+  const newRandomHero = GetRandomArrayElement(heroArrayWithoutCurrentHero);
   currentHeroId = newRandomHero.key;
   try {
     const heroBase64Image = await GetBase64FromUrl(newRandomHero.portrait);

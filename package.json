@@ -67,7 +67,8 @@
   "eslintConfig": {
     "extends": "@rweich",
     "rules": {
-      "sort-keys": 0
+      "sort-keys": 0,
+      "unicorn/prefer-top-level-await": 0
     }
   },
   "lint-staged": {
